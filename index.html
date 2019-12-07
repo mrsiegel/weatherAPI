@@ -57,7 +57,7 @@
 
         $.getJSON(query,function(json){
             console.log(JSON.stringify(json));
-			$('#tempImg').attr('src', "http://openweathermap.org/img/wn/" + json.weather[0]['icon'] + '@2x.png');
+			$('#tempImg').attr('src', "https://openweathermap.org/img/wn/" + json.weather[0]['icon'] + '@2x.png');
 			$("#loc").html(json.name);
 			$("#temp").html(json["main"].temp);
 			$("#low").html(json["main"].temp_min);
