@@ -9,6 +9,7 @@
 		padding: 5px;
 	}
 	#forecast{
+		display: none;
 		text-align: center;
 	}
 	#forecast div{
@@ -30,28 +31,27 @@
     	//  the low temperature for the day
     	//  the icon for the current weather.
 		var YourWeatherAppID = 'e5fc1f2c17e8a32d4119a2c9648420cd';
-		var currentCity = "Ann+Arbor";
+		var city = "Ann+Arbor";
 		var fahren = $('#fahrenheit');
 		var cels = $('#celsius');
 		var loc = $('#location');
 		if(loc.val().length !== 0){
-			var currentCity = loc.val();
+			var city = loc.val();
 		}
 
 		if(fahren.is(":checked")){
-			var units = fahren.val();
+			var units = "imperial";
 		}
 		if((cels.is(":checked"))){
-			var units = cels.val();
+			var units = "metric";
 		}
 		else{
 			var units = "imperial";
 		}
-
     	// You will need to update this query with the city, weather format (Celsius or Fahrenheit) and your OpenWeatherMap ID
     	 
     	// Right now I have it set to Chicago.  The default should be Ann Abor/Fahreheit.
-		let query = "http://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&APPID=" +YourWeatherAppID + "&units=" + units;
+		let query = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" +YourWeatherAppID + "&units=" + units;
         console.log("Query is :" + query)
 
 
@@ -62,6 +62,7 @@
 			$("#temp").html(json["main"].temp);
 			$("#low").html(json["main"].temp_min);
 			$("#high").html(json["main"].temp_max);
+			$("#forecast").css("display", "block");
     })
     }
     </script>
